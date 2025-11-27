@@ -1,0 +1,21 @@
+4. Check if a number is divisible by both 3 and 5.
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    // 20/5 0
+    int num;
+    printf("Enter A number to check weather is divisible 5 and 3");
+    scanf("%d",&num);
+    if(num%5==0 && num%3==0)
+    {
+        printf(" %d is Divisible By 5 and 3",num);
+    }
+    else
+    {
+        printf(" %d is Not divisble By 5 and 3",num);
+    }
+
+    return 0;
+}
