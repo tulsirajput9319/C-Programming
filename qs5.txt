@@ -1,0 +1,19 @@
+5. Check if a given year is a leap year.
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    
+    int num;
+    printf("Enter a number to check weather its leap year or not");
+    scanf("%d",&num);
+if((num % 4 == 0 && num % 100 != 0) || (num % 400 == 0) )   {
+        printf("Its leap year");
+    }
+    else
+    {
+        printf("Its not leap year");
+    }
+
+    return 0;
+}
