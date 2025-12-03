@@ -1,0 +1,8 @@
+  // print week name base on input or number 
+    // print months name  1-january , 2= febuary,3=march 12 dec 13
+   int val=1;//
+   //1= sunday,
+   //2 monday,
+   //3 tuesday,
+   //4= wednesday
+   //5= thursday,
