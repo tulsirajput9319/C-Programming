@@ -1,0 +1,108 @@
+
+public List<CustomerFeeExclusionMasterDataDTO> getAllDetailsForSave() {
+    log.info("CustomerFeeExclusionService::getAllDetailsForSave::start");
+
+    // Create a custom thread pool with 10 threads
+    final ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+    try {
+        // Create asynchronous tasks using CompletableFuture
+        CompletableFuture<List<MstrFeeDTO>> mstrFeeFuture =
+                CompletableFuture.supplyAsync(this::customerExclusionGetFee, executorService);
+
+        CompletableFuture<List<MstrOrderTypeDTO>> orderTypeFuture =
+                CompletableFuture.supplyAsync(orderTypeRepository::getAllOrderTypes, executorService);
+
+        CompletableFuture<List<MstrReturnReasonDTO>> returnReasonFuture =
+                CompletableFuture.supplyAsync(mstrReturnReasonRepository::getAllReturnReasons, executorService);
+
+        CompletableFuture<List<MstrMopDTO>> mopFuture =
+                CompletableFuture.supplyAsync(mopRepository::getAllMop, executorService);
+
+        CompletableFuture<List<MstrItemGroupDTO>> itemGroupFuture =
+                CompletableFuture.supplyAsync(mstrItemGroupRepository::getAllItemGroups, executorService);
+
+        CompletableFuture<List<MstrOrderTypeDTO>> mstrOrderTypeFuture =
+                CompletableFuture.supplyAsync(orderTypeRepository::getAllOrderTypes, executorService);
+
+        // Combine all futures
+        CompletableFuture<Void> allFutures = CompletableFuture.allOf(
+                mstrFeeFuture, orderTypeFuture, returnReasonFuture, mopFuture, itemGroupFuture, mstrOrderTypeFuture
+        );
+
+        // Wait for all tasks to complete
+        allFutures.join();
+
+        // Collect results
+        List<MstrFeeDTO> mstrFee = mstrFeeFuture.get();
+        List<MstrOrderTypeDTO> orderTypes = orderTypeFuture.get();
+        List<MstrReturnReasonDTO> returnReasons = returnReasonFuture.get();
+        List<MstrMopDTO> mops = mopFuture.get();
+        List<MstrItemGroupDTO> itemGroups = itemGroupFuture.get();
+        List<MstrOrderTypeDTO> mstrOrderTypes = mstrOrderTypeFuture.get();
+
+        // Combine into DTO (example)
+        return buildCustomerFeeExclusionMasterData(mstrFee, orderTypes, returnReasons, mops, itemGroups, mstrOrderTypes);
+
+    } catch (Exception e) {
+        log.error("Error while fetching details for save", e);
+        throw new RuntimeException("Failed to fetch details", e);
+    } finally {
+        executorService.shutdown();
+    }
+}
+
+
+
+public List<CustomerFeeExclusionMasterDataDTO> getAllDetailsForSave() {
+    log.info("CustomerFeeExclusionService::getAllDetailsForSave::start");
+
+    // Create a custom thread pool with 10 threads
+    final ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+    try {
+        // Create asynchronous tasks using CompletableFuture
+        CompletableFuture<List<MstrFeeDTO>> mstrFeeFuture =
+                CompletableFuture.supplyAsync(this::customerExclusionGetFee, executorService);
+
+        CompletableFuture<List<MstrOrderTypeDTO>> orderTypeFuture =
+                CompletableFuture.supplyAsync(orderTypeRepository::getAllOrderTypes, executorService);
+
+        CompletableFuture<List<MstrReturnReasonDTO>> returnReasonFuture =
+                CompletableFuture.supplyAsync(mstrReturnReasonRepository::getAllReturnReasons, executorService);
+
+        CompletableFuture<List<MstrMopDTO>> mopFuture =
+                CompletableFuture.supplyAsync(mopRepository::getAllMop, executorService);
+
+        CompletableFuture<List<MstrItemGroupDTO>> itemGroupFuture =
+                CompletableFuture.supplyAsync(mstrItemGroupRepository::getAllItemGroups, executorService);
+
+        CompletableFuture<List<MstrOrderTypeDTO>> mstrOrderTypeFuture =
+                CompletableFuture.supplyAsync(orderTypeRepository::getAllOrderTypes, executorService);
+
+        // Combine all futures
+        CompletableFuture<Void> allFutures = CompletableFuture.allOf(
+                mstrFeeFuture, orderTypeFuture, returnReasonFuture, mopFuture, itemGroupFuture, mstrOrderTypeFuture
+        );
+
+        // Wait for all tasks to complete
+        allFutures.join();
+
+        // Collect results
+        List<MstrFeeDTO> mstrFee = mstrFeeFuture.get();
+        List<MstrOrderTypeDTO> orderTypes = orderTypeFuture.get();
+        List<MstrReturnReasonDTO> returnReasons = returnReasonFuture.get();
+        List<MstrMopDTO> mops = mopFuture.get();
+        List<MstrItemGroupDTO> itemGroups = itemGroupFuture.get();
+        List<MstrOrderTypeDTO> mstrOrderTypes = mstrOrderTypeFuture.get();
+
+        // Combine into DTO (example)
+        return buildCustomerFeeExclusionMasterData(mstrFee, orderTypes, returnReasons, mops, itemGroups, mstrOrderTypes);
+
+    } catch (Exception e) {
+        log.error("Error while fetching details for save", e);
+        throw new RuntimeException("Failed to fetch details", e);
+    } finally {
+        executorService.shutdown();
+    }
+}
