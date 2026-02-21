@@ -1,0 +1,77 @@
+// first program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+int num=10;//variable initlizatation as num with value 10
+int a=10;// variable initlizatation with value 10
+int b=20;//variable initlizatation with value 20 
+int A=20;
+cout<<"Hello world\n";
+cout<<"Welcome to C++\t";
+cout<<50*10<<endl;
+/*
+cout<<"Number is ::"<<num<<endl;
+cout<<"Sum of Two Number::"<<a+b;
+cout<<"\nDifference of two number:: "<<a-b;
+cout<<"\nDivision of two number::"<<(float)a/b<<endl;
+cout<<"Multiplication of two number "<<a*b;
+*/
+
+
+return 0;
+}
+
+// second program
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    // hard coded values
+/*int num1=10;
+int num2=20;
+cout<<"Sum of Two Number:: "<<num1+num2;*/
+
+int num1;
+int num2;
+
+cout<<"Enter two numbers";
+cin>>num1>>num2;
+//cout<<num1<<"\t"<<num2;
+/*int sum=num1+num2;
+cout<<sum;*/
+
+cout<<"Sum of two Number "<<num1+num2;
+
+
+
+    return 0;
+}
+
+// program third
+
+#include <iostream>
+using namespace std;
+
+int main() {
+int num;
+cout << "Enter A Number";
+cin>>num;//10
+//cout<<"User entered is "<<num;
+
+if(num%2==0)
+{
+    cout<<num <<" Is Even Number";
+}
+else
+{
+    cout<<num<<" Is Odd Number";
+}
+
+    return 0;
+}
+
